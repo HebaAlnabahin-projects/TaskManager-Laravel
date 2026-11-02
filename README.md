@@ -145,6 +145,39 @@ docker compose ps
 docker compose logs app
 ```
 
+## Docker Healthchecks
+
+The application and MySQL database have Docker healthchecks configured.
+
+- Application: checks the Laravel `/up` health endpoint.
+- MySQL: checks whether the database server is responding.
+
+Check the health status of both containers using:
+
+```powershell
+docker compose ps
+```
+
+Both containers should show `healthy`.
+
+## PowerShell Scripts
+
+The `scripts/` directory contains PowerShell scripts to simplify Docker operations.
+
+| Script | Description |
+|---|---|
+| `build.ps1` | Builds the Docker image. |
+| `up.ps1` | Starts the containers and displays their status. |
+| `down.ps1` | Stops and removes the containers. |
+
+Run the scripts from the project root:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\up.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\down.ps1
+```
+
 ## 📚 Documentation
 
 Additional project notes and screenshots are available in the `docs/` directory.
@@ -153,4 +186,4 @@ Additional project notes and screenshots are available in the `docs/` directory.
 
 **Heba Alnabahin**
 
-GitHub: https://github.com/HebaAlnabahin-projects
+GitHub: https://github.com/HebaAlnabahin-projects/TaskManager-Laravel
