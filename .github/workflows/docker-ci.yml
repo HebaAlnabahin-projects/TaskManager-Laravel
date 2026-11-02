@@ -1,0 +1,29 @@
+name: Docker CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/github-actions-ci
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      APP_KEY: base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+      DB_PASSWORD: ci_password
+      MYSQL_ROOT_PASSWORD: ci_root_password
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose
+        run: docker compose config --quiet
+
+      - name: Build Docker image
+        run: docker build -t taskmanager-app:ci .
