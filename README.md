@@ -144,6 +144,19 @@ docker compose ps
 ```
 docker compose logs app
 ```
+**Stop and remove containers**
+
+```powershell
+docker compose down
+```
+
+**Remove containers and database data**
+
+```powershell
+docker compose down -v
+```
+
+Note: The `-v` option deletes the MySQL volume and all stored database data.
 
 ## Docker Healthchecks
 
