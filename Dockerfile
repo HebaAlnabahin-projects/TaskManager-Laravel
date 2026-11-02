@@ -35,6 +35,12 @@ RUN composer install \
 
 COPY . .
 
+RUN mkdir -p storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
 RUN composer dump-autoload --no-dev --optimize \
     && php artisan package:discover --ansi
 
